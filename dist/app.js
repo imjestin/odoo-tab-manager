@@ -14,7 +14,6 @@ class App {
         this.consultantModeEl = document.getElementById("consultantMode");
         this.userModeEl = document.getElementById("userMode");
         this.newsModeEl = document.getElementById("newsMode");
-        this.modeDisplayEl = document.getElementById("modeDisplay");
         this.searchModeToggleEl = document.getElementById("searchModeToggle");
         this.searchModeIndicatorEl = document.getElementById("searchModeIndicator");
         this.searchEngineSelectorEl = document.getElementById("searchEngineSelector");
@@ -266,37 +265,21 @@ class App {
         switch (this.currentMode) {
             case "developer":
                 this.devModeEl?.classList.add("bg-odoo-purple", "text-white");
-                if (this.modeDisplayEl)
-                    this.modeDisplayEl.textContent = "Developer Mode";
                 this.updateBrowserAction("Developer");
                 break;
             case "consultant":
                 this.consultantModeEl?.classList.add("bg-odoo-purple", "text-white");
-                if (this.modeDisplayEl)
-                    this.modeDisplayEl.textContent = "Consultant Mode";
                 this.updateBrowserAction("Consultant");
                 break;
             case "user":
                 this.userModeEl?.classList.add("bg-odoo-purple", "text-white");
-                if (this.modeDisplayEl)
-                    this.modeDisplayEl.textContent = "User Mode";
                 this.updateBrowserAction("User");
                 break;
             case "news":
                 this.newsModeEl?.classList.add("bg-odoo-purple", "text-white");
-                if (this.modeDisplayEl)
-                    this.modeDisplayEl.textContent = "Latest News";
                 this.updateBrowserAction("News");
                 this.startNewsScroll();
                 break;
-        }
-        // Add fade animation to mode display
-        if (this.modeDisplayEl) {
-            this.modeDisplayEl.classList.add("opacity-0");
-            setTimeout(() => {
-                this.modeDisplayEl?.classList.remove("opacity-0");
-                this.modeDisplayEl?.classList.add("opacity-100", "transition-opacity", "duration-300");
-            }, 50);
         }
         // Update card visibility
         this.updateCards();

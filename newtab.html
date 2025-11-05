@@ -1,94 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Tab</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tab</title>
     <link rel="stylesheet" href="dist/output.css" />
     <link rel="icon" href="icons/icon128.png" />
-  </head>
+</head>
   <body
     class="transition-all duration-200 text-slate-900 dark:text-white font-sans min-h-screen relative overflow-x-hidden">
-    <!-- Background base -->
+  <!-- Background base -->
     <div
       class="fixed inset-0 bg-slate-50 dark:bg-slate-900 transition-colors duration-200"></div>
-
-    <!-- Google colors gradient circle - Light Mode -->
+  
+  <!-- Google colors gradient circle - Light Mode -->
     <div
       class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20 dark:opacity-0 blur-[100px] pointer-events-none animate-slow-spin">
-      <!-- Blue quadrant -->
+    <!-- Blue quadrant -->
       <div
         class="absolute top-0 left-0 w-1/2 h-1/2 bg-[#4285F4] rounded-tl-full mix-blend-multiply"></div>
-      <!-- Red quadrant -->
+    <!-- Red quadrant -->
       <div
         class="absolute top-0 right-0 w-1/2 h-1/2 bg-[#DB4437] rounded-tr-full mix-blend-multiply"></div>
-      <!-- Yellow quadrant -->
+    <!-- Yellow quadrant -->
       <div
         class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[#F4B400] rounded-br-full mix-blend-multiply"></div>
-      <!-- Green quadrant -->
+    <!-- Green quadrant -->
       <div
         class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#0F9D58] rounded-bl-full mix-blend-multiply"></div>
-    </div>
+  </div>
 
-    <!-- Google colors gradient circle - Dark Mode -->
+  <!-- Google colors gradient circle - Dark Mode -->
     <div
       class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-0 dark:opacity-30 blur-[100px] pointer-events-none animate-slow-spin">
-      <!-- Blue quadrant -->
+    <!-- Blue quadrant -->
       <div
         class="absolute top-0 left-0 w-1/2 h-1/2 bg-[#82B1FF] rounded-tl-full mix-blend-screen"></div>
-      <!-- Red quadrant -->
+    <!-- Red quadrant -->
       <div
         class="absolute top-0 right-0 w-1/2 h-1/2 bg-[#FF8A80] rounded-tr-full mix-blend-screen"></div>
-      <!-- Yellow quadrant -->
+    <!-- Yellow quadrant -->
       <div
         class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[#FFD180] rounded-br-full mix-blend-screen"></div>
-      <!-- Green quadrant -->
+    <!-- Green quadrant -->
       <div
         class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#69F0AE] rounded-bl-full mix-blend-screen"></div>
-    </div>
+  </div>
 
-    <!-- Additional glow effects -->
+  <!-- Additional glow effects -->
     <div
       class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white/10 dark:bg-white/20 blur-[80px] animate-pulse-slow"></div>
 
-    <!-- Radial overlay for better contrast -->
+  <!-- Radial overlay for better contrast -->
     <div
       class="fixed inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent dark:via-slate-900/90"></div>
 
-    <!-- Content wrapper -->
+  <!-- Content wrapper -->
     <div class="relative z-10 flex items-center justify-center min-h-screen">
-      <header class="pt-8 pb-12 fixed top-0 left-0 right-0">
-        <div class="max-w-7xl mx-auto px-6 z-10">
-          <div class="flex items-center justify-between mb-4">
-            <!-- App Logo -->
+  <header class="pt-8 pb-12 fixed top-0 left-0 right-0">
+    <div class="max-w-7xl mx-auto px-6 z-10">
+      <div class="flex items-center justify-between mb-4">
+        <!-- App Logo -->
             <div class="relative">
               <img
                 src="icons/icon128.png"
                 alt="App Logo"
                 class="w-10 h-10 object-fit transition-transform duration-200 box-shadow-lg" />
-            </div>
-            <div
-              id="modeDisplay"
-              class="text-sm font-medium text-slate-600 dark:text-gray-400 bg-white dark:bg-card-bg px-4 py-1 rounded-full border border-slate-200 dark:border-gray-600">
-              Developer Mode
-            </div>
-          </div>
         </div>
-      </header>
+            <!-- Mode Selector Buttons -->
+            <div class="flex items-center gap-3">
+              <div class="relative bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg dark:shadow-none border border-slate-200/50 dark:border-gray-600/50 flex gap-3">
+                <!-- Developer Mode -->
+                <button
+                  id="devMode"
+                  class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  <div class="absolute bottom-full mb-2 hidden group-hover:block">
+                    <div
+                      class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
+                      Developer Mode (<span data-shortcut>Alt+1</span>)
+                    </div>
+                  </div>
+                </button>
+                <!-- Consultant Mode -->
+                <button
+                  id="consultantMode"
+                  class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <div class="absolute bottom-full mb-2 hidden group-hover:block">
+                    <div
+                      class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
+                      Consultant Mode (<span data-shortcut>Alt+2</span>)
+                    </div>
+                  </div>
+                </button>
+                <!-- User Mode -->
+                <button
+                  id="userMode"
+                  class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors m-0">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <div class="absolute bottom-full mb-2 hidden group-hover:block">
+                    <div
+                      class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
+                      User Mode (<span data-shortcut>Alt+3</span>)
+                    </div>
+                  </div>
+                </button>
+                <!-- News Mode -->
+                <button
+                  id="newsMode"
+                  class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                  <div class="absolute bottom-full mb-2 hidden group-hover:block">
+                    <div
+                      class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
+                      News Mode (<span data-shortcut>Alt+4</span>)
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+      </div>
+    </div>
+  </header>
 
       <main class="max-w-7xl mx-auto px-6 pb-8 w-full">
         <div class="text-center mb-8">
-          <div class="flex items-center justify-center gap-2 mb-2">
-            <h1 class="text-4xl font-bold group relative" id="greeting"></h1>
+           <div class="flex items-center justify-center gap-2 mb-2">
+             <h1 class="text-4xl font-bold group relative" id="greeting"></h1>
             <input
               type="text"
               id="nameInput"
               placeholder="Enter your name"
-              class="text-4xl font-bold bg-transparent border-b-2 border-odoo-purple/20 dark:border-odoo-purple-light/20 focus:border-odoo-purple dark:focus:border-odoo-purple-light outline-none px-2 py-1 w-48 placeholder:text-slate-400/50 dark:placeholder:text-gray-500/50 hidden" />
-          </div>
+               class="text-4xl font-bold bg-transparent border-b-2 border-odoo-purple/20 dark:border-odoo-purple-light/20 focus:border-odoo-purple dark:focus:border-odoo-purple-light outline-none px-2 py-1 w-48 placeholder:text-slate-400/50 dark:placeholder:text-gray-500/50 hidden" />
+           </div>
           <p class="text-lg text-slate-600 dark:text-gray-400" id="date"></p>
         </div>
-
+        
         <div class="max-w-3xl mx-auto mb-12">
           <div class="relative">
             <div class="relative">
@@ -231,11 +319,11 @@
             </div>
           </div>
         </div>
-        <!-- Quick Links Section - Full Width -->
-        <div class="mb-8">
+    <!-- Quick Links Section - Full Width -->
+    <div class="mb-8">
           <div
             class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-xl p-6 shadow-sm dark:shadow-none border border-slate-200/50 dark:border-gray-700/30 transition-all duration-200">
-            <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center justify-between mb-4">
               <h2
                 class="text-xl font-semibold text-slate-800 dark:text-white/90">
                 Quick Links
@@ -243,13 +331,13 @@
               <button
                 id="editQuickLinks"
                 class="text-sm text-odoo-purple dark:text-odoo-purple-light hover:underline">
-                Edit
-              </button>
-            </div>
+            Edit
+          </button>
+        </div>
             <div
               id="quickLinksGrid"
               class="grid grid-cols-4 sm:grid-cols-8 gap-4">
-              <div class="relative">
+          <div class="relative">
                 <a
                   href="https://github.com/odoo/odoo"
                   target="_blank"
@@ -260,32 +348,32 @@
                       src="https://www.odoo.com/web/image/website/1/favicon"
                       alt="Odoo"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Odoo</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://chat.cybrosys.com/"
                   target="_blank"
                   class="flex flex-col items-center cursor-pointer group">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center font-semibold mb-2 group-hover:border-accent-blue/50 transition-all duration-200">
+              <div
+                class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center font-semibold mb-2 group-hover:border-accent-blue/50 transition-all duration-200">
                     <img
                       src="https://www.images.cybrosys.com/images/favicon.ico"
                       alt="Odoo"
                       class="w-8 h-8" />
-                  </div>
-                  <span
+              </div>
+              <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >AI Chat</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://www.odoo.com/documentation/17.0/"
                   target="_blank"
@@ -296,15 +384,15 @@
                       src="https://www.odoo.com/favicon.ico"
                       alt="Docs"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Docs</span
                   >
-                </a>
-              </div>
+            </a>
+          </div>
 
-              <div class="relative">
+          <div class="relative">
                 <a
                   href="https://apps.odoo.com"
                   target="_blank"
@@ -315,14 +403,14 @@
                       src="https://apps.odoo.com/web/image/website/1/favicon"
                       alt="Apps"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Apps</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://www.cybrosys.com/blog/"
                   target="_blank"
@@ -333,14 +421,14 @@
                       src="https://www.images.cybrosys.com/images/favicon.ico"
                       alt="Blogs"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Blogs</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://github.com/OCA"
                   target="_blank"
@@ -351,14 +439,14 @@
                       src="https://github.com/OCA.png"
                       alt="OCA"
                       class="w-8 h-8 rounded-full" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >OCA</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://runbot.odoo.com"
                   target="_blank"
@@ -369,14 +457,14 @@
                       src="https://runbot.odoo.com/web/image/website/1/favicon"
                       alt="Runbot"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Runbot</span
                   >
-                </a>
-              </div>
-              <div class="relative">
+            </a>
+          </div>
+          <div class="relative">
                 <a
                   href="https://odoo.sh"
                   target="_blank"
@@ -387,20 +475,20 @@
                       src="https://odoo.sh/favicon.ico"
                       alt="Odoo.sh"
                       class="w-8 h-8" />
-                  </div>
+              </div>
                   <span
                     class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"
                     >Odoo.sh</span
                   >
-                </a>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Mode-specific Cards -->
+    <!-- Mode-specific Cards -->
         <div class="">
-          <!-- Developer Mode Cards -->
+        <!-- Developer Mode Cards -->
           <div
             data-mode="developer"
             class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -414,7 +502,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Core developer guides and references.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.odoo.com/documentation/master/developer/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -422,8 +510,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Dev Docs
-                </a>
+                Odoo Dev Docs
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/developer/reference/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -431,8 +519,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  API Reference
-                </a>
+                API Reference
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/developer/howtos/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -440,8 +528,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  How-tos
-                </a>
+                How-tos
+              </a>
                 <a
                   href="https://runbot.odoo.com/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -449,10 +537,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Runbot
-                </a>
-              </div>
+                Runbot
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -463,7 +551,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Source, PRs, and OCA modules.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://github.com/odoo/odoo"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -471,8 +559,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo GitHub
-                </a>
+                Odoo GitHub
+              </a>
                 <a
                   href="https://github.com/odoo/odoo/pulls"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -480,8 +568,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo PRs
-                </a>
+                Odoo PRs
+              </a>
                 <a
                   href="https://github.com/OCA"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -489,8 +577,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  OCA
-                </a>
+                OCA
+              </a>
                 <a
                   href="https://www.odoo.com/forum/help-1"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -498,10 +586,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Forum Dev
-                </a>
-              </div>
+                Odoo Forum Dev
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -512,7 +600,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Keep up with AI that helps devs.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://openai.com"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -520,8 +608,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  OpenAI
-                </a>
+                OpenAI
+              </a>
                 <a
                   href="https://huggingface.co"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -529,8 +617,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Hugging Face
-                </a>
+                Hugging Face
+              </a>
                 <a
                   href="https://paperswithcode.com"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -538,8 +626,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Papers with Code
-                </a>
+                Papers with Code
+              </a>
                 <a
                   href="https://arxiv.org"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -547,13 +635,13 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  ArXiv
-                </a>
-              </div>
+                ArXiv
+              </a>
             </div>
           </div>
+        </div>
 
-          <!-- Consultant Mode Cards -->
+        <!-- Consultant Mode Cards -->
           <div
             data-mode="consultant"
             class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -567,7 +655,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Official functional documentation and apps.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.odoo.com/documentation/master/applications/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -575,8 +663,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Functional Docs
-                </a>
+                Odoo Functional Docs
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/overview/main_concepts/what_is_odoo.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -584,8 +672,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  User/Functional Guides
-                </a>
+                User/Functional Guides
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/sales.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -593,8 +681,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Apps by Module
-                </a>
+                Apps by Module
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/finance.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -602,10 +690,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Accounting & Inventory
-                </a>
-              </div>
+                Accounting & Inventory
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -616,7 +704,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Watch step-by-step functional tutorials.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.youtube.com/results?search_query=odoo+functional+tutorials"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -624,8 +712,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  YouTube: Odoo Functional
-                </a>
+                YouTube: Odoo Functional
+              </a>
                 <a
                   href="https://www.youtube.com/@Odoo"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -633,8 +721,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Experience Talks
-                </a>
+                Odoo Experience Talks
+              </a>
                 <a
                   href="https://www.google.com/search?q=odoo+implementation+best+practices"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -642,8 +730,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Implementation Tips
-                </a>
+                Implementation Tips
+              </a>
                 <a
                   href="https://www.youtube.com/results?search_query=odoo+sales+crm+tutorial"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -651,10 +739,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Playlists (Sales/CRM/etc.)
-                </a>
-              </div>
+                Playlists (Sales/CRM/etc.)
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -665,7 +753,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Case studies, Q&A, and best practices.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.odoo.com/forum/help-1"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -673,8 +761,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Forum
-                </a>
+                Odoo Forum
+              </a>
                 <a
                   href="https://www.cybrosys.com/blog"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -682,8 +770,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Cybrosys Blog
-                </a>
+                Cybrosys Blog
+              </a>
                 <a
                   href="https://www.odoo.com/blog"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -691,8 +779,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Blog
-                </a>
+                Odoo Blog
+              </a>
                 <a
                   href="https://www.google.com/search?q=odoo+success+stories"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -700,13 +788,13 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Success Stories
-                </a>
-              </div>
+                Success Stories
+              </a>
             </div>
           </div>
+        </div>
 
-          <!-- User Mode Cards -->
+        <!-- User Mode Cards -->
           <div
             data-mode="user"
             class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -720,7 +808,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 User-friendly guides for core flows.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.odoo.com/documentation/master/applications/"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -728,8 +816,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  User Docs (Apps)
-                </a>
+                User Docs (Apps)
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/general.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -737,8 +825,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Basics & Concepts
-                </a>
+                Basics & Concepts
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/sales/crm.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -746,8 +834,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Sales & CRM
-                </a>
+                Sales & CRM
+              </a>
                 <a
                   href="https://www.odoo.com/documentation/master/applications/finance/accounting.html"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -755,10 +843,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Accounting
-                </a>
-              </div>
+                Accounting
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -769,7 +857,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Learn by watching.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.youtube.com/@cybrosys-technologies/videos"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -777,8 +865,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  YouTube: Odoo Tutorials
-                </a>
+                YouTube: Odoo Tutorials
+              </a>
                 <a
                   href="https://www.youtube.com/@Odoo"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -786,8 +874,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Official Odoo Channel
-                </a>
+                Official Odoo Channel
+              </a>
                 <a
                   href="https://www.youtube.com/@cybrosys-technologies/playlists"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -795,8 +883,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Playlists by Module
-                </a>
+                Playlists by Module
+              </a>
                 <a
                   href="https://www.google.com/search?q=odoo+webinar"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -804,10 +892,10 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Webinars
-                </a>
-              </div>
+                Webinars
+              </a>
             </div>
+          </div>
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-5 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h3
@@ -818,7 +906,7 @@
                 class="text-sm text-slate-500 dark:text-gray-400 mb-4 line-clamp-2">
                 Tips, tricks, and community help.
               </p>
-              <div class="space-y-2.5">
+            <div class="space-y-2.5">
                 <a
                   href="https://www.cybrosys.com/blog"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -826,8 +914,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Cybrosys Blog
-                </a>
+                Cybrosys Blog
+              </a>
                 <a
                   href="https://www.odoo.com/blog"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -835,8 +923,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Blog
-                </a>
+                Odoo Blog
+              </a>
                 <a
                   href="https://www.odoo.com/forum/help-1"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -844,8 +932,8 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  Odoo Forum (Help)
-                </a>
+                Odoo Forum (Help)
+              </a>
                 <a
                   href="https://www.google.com/search?q=odoo+faq+how+to"
                   class="group flex items-center text-sm text-slate-700 dark:text-gray-300 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors duration-200">
@@ -853,14 +941,14 @@
                     class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                     >→</span
                   >
-                  FAQs
-                </a>
-              </div>
+                FAQs
+              </a>
             </div>
           </div>
+        </div>
 
-          <!-- News Mode Card -->
-          <div data-mode="news" class="hidden">
+        <!-- News Mode Card -->
+        <div data-mode="news" class="hidden">
             <div
               class="bg-white/30 dark:bg-card-bg/30 backdrop-blur-md rounded-lg border border-slate-200/50 dark:border-gray-700/30 p-6 transition-all duration-200 hover:border-odoo-purple/40 dark:hover:border-odoo-purple-light/30">
               <h2
@@ -875,243 +963,144 @@
                     stroke-linejoin="round"
                     stroke-width="2"
                     d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-                Latest Open Source Projects
-              </h2>
-              <div class="relative overflow-hidden h-40">
-                <div id="newsContainer" class="absolute inset-0">
-                  <!-- News items will be inserted here by JavaScript -->
-                </div>
-              </div>
+              </svg>
+              Latest Open Source Projects
+            </h2>
+            <div class="relative overflow-hidden h-40">
+              <div id="newsContainer" class="absolute inset-0">
+                <!-- News items will be inserted here by JavaScript -->
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </div>
+  </main>
 
-      <!-- theme-toggle -->
-
-      <!-- Floating Theme Toggle -->
-
-      <!-- Mode Selector -->
-      <div class="fixed left-[50%]  -translate-x-1/2 bottom-0 mb-4 z-[99] flex justify-center gap-5">
-        <div class="flex justify-center">
-          <div
-            class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg dark:shadow-none border border-slate-200/50 dark:border-gray-600/50 flex gap-5">
-            <!-- Developer Mode -->
-            <button
-              id="devMode"
-              class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              <div class="absolute top-10 mt-2 hidden group-hover:block">
-                <div
-                  class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
-                  Developer Mode (<span data-shortcut>Alt+1</span>)
-                </div>
-              </div>
-            </button>
-            <!-- Consultant Mode -->
-            <button
-              id="consultantMode"
-              class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <div class="absolute top-10 mt-2 hidden group-hover:block">
-                <div
-                  class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
-                  Consultant Mode (<span data-shortcut>Alt+2</span>)
-                </div>
-              </div>
-            </button>
-            <!-- User Mode -->
-            <button
-              id="userMode"
-              class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors m-0">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              <div class="absolute top-10 mt-2 hidden group-hover:block">
-                <div
-                  class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
-                  User Mode (<span data-shortcut>Alt+3</span>)
-                </div>
-              </div>
-            </button>
-            <!-- News Mode -->
-            <button
-              id="newsMode"
-              class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-              </svg>
-              <div class="absolute top-10 mt-2 hidden group-hover:block">
-                <div
-                  class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
-                  News Mode (<span data-shortcut>Alt+4</span>)
-                </div>
-              </div>
-            </button>
-            <!-- AI Services Button -->
-            <button
-              id="aiServicesButton"
-              class="group relative w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-gray-400 hover:text-odoo-purple dark:hover:text-odoo-purple-light transition-colors">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 128 128">
-                <path
-                  fill="currentColor"
-                  d="M49.7,43.72l-12,37.44A1.39,1.39,0,0,0,39,83h3.36a1.39,1.39,0,0,0,1.33-1l1.88-6H62l-.23-.37L63.83,82a1.39,1.39,0,0,0,1.33,1h3.36a1.39,1.39,0,0,0,1.33-1.82l-12-37.44a1.4,1.4,0,0,0-1.33-1H51A1.39,1.39,0,0,0,49.7,43.72ZM47.57,70l6.19-19.27L60,70Z" />
-                <rect
-                  x="79"
-                  y="42.75"
-                  width="6"
-                  height="40.24"
-                  rx="1.4"
-                  fill="currentColor" />
-                <path
-                  fill="currentColor"
-                  d="M67.26,98H38.16A8.16,8.16,0,0,1,30,89.84V38.16A8.16,8.16,0,0,1,38.16,30H89.84A8.16,8.16,0,0,1,98,38.16V64A2.07,2.07,0,0,0,100.12,66h0a11,11,0,0,1,4.91,1.14,2.06,2.06,0,0,0,3-1.87V38.16A18.16,18.16,0,0,0,89.84,20H38.16A18.16,18.16,0,0,0,20,38.16V89.84A18.16,18.16,0,0,0,38.16,108h33.3a2.07,2.07,0,0,0,1.47-3.53,16.13,16.13,0,0,1-3.71-5.06A2.11,2.11,0,0,0,67.26,98Z" />
-                <path
-                  fill="currentColor"
-                  d="M111.73,101.8l9.06-3.57a1,1,0,0,0,0-1.86l-9.06-3.57a12.61,12.61,0,0,1-7.09-7.09l-3.57-9a1,1,0,0,0-.93-.63,1,1,0,0,0-.93.63l-3.57,9a12.58,12.58,0,0,1-7.09,7.09l-9,3.57a1,1,0,0,0,0,1.86l9,3.57a12.58,12.58,0,0,1,7.09,7.09l3.57,9a1,1,0,0,0,.93.64,1,1,0,0,0,.93-.64l3.57-9A12.61,12.61,0,0,1,111.73,101.8Z" />
-              </svg>
-              <div class="absolute top-10 mt-2 hidden group-hover:block">
-                <div
-                  class="bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm text-xs text-slate-600 dark:text-gray-400 px-2 py-1 rounded shadow-sm whitespace-nowrap">
-                  AI Services
-                </div>
-              </div>
-            </button>
+  <!-- Floating Action Buttons -->
+  <div class="fixed bottom-6 left-6 right-6 flex justify-between items-end z-[99999] pointer-events-none">
+    <!-- AI Services Button (Left) -->
+    <div class="relative pointer-events-auto">
+      <button
+        id="aiServicesButton"
+        class="p-4 bg-white dark:bg-card-bg rounded-full shadow-lg dark:shadow-none border border-slate-200 dark:border-gray-600 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-odoo-purple/50 dark:focus:ring-odoo-purple-light/50 hover:border-odoo-purple/30 dark:hover:border-odoo-purple-light/30 group">
+        <svg class="w-6 h-6 text-slate-700 dark:text-white" fill="currentColor" viewBox="0 0 128 128">
+          <path
+            fill="currentColor"
+            d="M49.7,43.72l-12,37.44A1.39,1.39,0,0,0,39,83h3.36a1.39,1.39,0,0,0,1.33-1l1.88-6H62l-.23-.37L63.83,82a1.39,1.39,0,0,0,1.33,1h3.36a1.39,1.39,0,0,0,1.33-1.82l-12-37.44a1.4,1.4,0,0,0-1.33-1H51A1.39,1.39,0,0,0,49.7,43.72ZM47.57,70l6.19-19.27L60,70Z" />
+          <rect
+            x="79"
+            y="42.75"
+            width="6"
+            height="40.24"
+            rx="1.4"
+            fill="currentColor" />
+          <path
+            fill="currentColor"
+            d="M67.26,98H38.16A8.16,8.16,0,0,1,30,89.84V38.16A8.16,8.16,0,0,1,38.16,30H89.84A8.16,8.16,0,0,1,98,38.16V64A2.07,2.07,0,0,0,100.12,66h0a11,11,0,0,1,4.91,1.14,2.06,2.06,0,0,0,3-1.87V38.16A18.16,18.16,0,0,0,89.84,20H38.16A18.16,18.16,0,0,0,20,38.16V89.84A18.16,18.16,0,0,0,38.16,108h33.3a2.07,2.07,0,0,0,1.47-3.53,16.13,16.13,0,0,1-3.71-5.06A2.11,2.11,0,0,0,67.26,98Z" />
+          <path
+            fill="currentColor"
+            d="M111.73,101.8l9.06-3.57a1,1,0,0,0,0-1.86l-9.06-3.57a12.61,12.61,0,0,1-7.09-7.09l-3.57-9a1,1,0,0,0-.93-.63,1,1,0,0,0-.93.63l-3.57,9a12.58,12.58,0,0,1-7.09,7.09l-9,3.57a1,1,0,0,0,0,1.86l9,3.57a12.58,12.58,0,0,1,7.09,7.09l3.57,9a1,1,0,0,0,.93.64,1,1,0,0,0,.93-.64l3.57-9A12.61,12.61,0,0,1,111.73,101.8Z" />
+        </svg>
+        <span class="sr-only">AI Services</span>
+      </button>
+      <!-- AI Services Dropdown -->
+      <div
+        id="aiServicesDropdown"
+        class="absolute bottom-0 left-20 mb-1 z-50 opacity-0 invisible scale-95 translate-y-2 transition-all duration-300 ease-out pointer-events-none">
+        <div class="flex flex-row gap-2 items-center">
+          <!-- Gemini -->
+          <a
+            href="https://gemini.google.com"
+            target="_blank"
+            class="group flex flex-row items-center gap-2 px-3 py-2 bg-white dark:bg-card-bg rounded-full cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md border border-slate-200 dark:border-gray-600">
             <div
-              id="aiServicesDropdown"
-              class="hidden fixed bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-white/80 dark:bg-card-bg/80 backdrop-blur-sm rounded-xl p-4 shadow-lg dark:shadow-none border border-slate-200/50 dark:border-gray-600/50 mt-2">
-              <div class="flex flex-row gap-4 items-center justify-center">
-                <!-- Gemini -->
-                <a
-                  href="https://gemini.google.com"
-                  target="_blank"
-                  class="group flex flex-col items-center cursor-pointer transition-transform hover:scale-110">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center mb-2 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
-                    <img
-                      src="https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg"
-                      alt="Gemini"
-                      class="w-8 h-8 favicon-img" />
-                  </div>
-                  <span
-                    class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                    Gemini
-                  </span>
-                </a>
-                <!-- ChatGPT -->
-                <a
-                  href="https://chat.openai.com"
-                  target="_blank"
-                  class="group flex flex-col items-center cursor-pointer transition-transform hover:scale-110">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center mb-2 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
-                    <img
-                      src="https://www.google.com/s2/favicons?domain=chat.openai.com&sz=64"
-                      alt="ChatGPT"
-                      class="w-8 h-8 favicon-img" />
-                  </div>
-                  <span
-                    class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                    ChatGPT
-                  </span>
-                </a>
-                <!-- Claude -->
-                <a
-                  href="https://claude.ai"
-                  target="_blank"
-                  class="group flex flex-col items-center cursor-pointer transition-transform hover:scale-110">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center mb-2 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
-                    <img
-                      src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64"
-                      alt="Claude"
-                      class="w-8 h-8 favicon-img" />
-                  </div>
-                  <span
-                    class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                    Claude
-                  </span>
-                </a>
-                <!-- Perplexity -->
-                <a
-                  href="https://www.perplexity.ai"
-                  target="_blank"
-                  class="group flex flex-col items-center cursor-pointer transition-transform hover:scale-110">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center mb-2 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
-                    <img
-                      src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64"
-                      alt="Perplexity"
-                      class="w-8 h-8 favicon-img" />
-                  </div>
-                  <span
-                    class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                    Perplexity
-                  </span>
-                </a>
-                <!-- Grok -->
-                <a
-                  href="https://x.ai"
-                  target="_blank"
-                  class="group flex flex-col items-center cursor-pointer transition-transform hover:scale-110">
-                  <div
-                    class="w-12 h-12 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center mb-2 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
-                    <img
-                      src="https://www.google.com/s2/favicons?domain=x.ai&sz=64"
-                      alt="Grok"
-                      class="w-8 h-8 favicon-img" />
-                  </div>
-                  <span
-                    class="text-xs text-slate-600 dark:text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                    Grok
-                  </span>
-                </a>
-              </div>
+              class="w-8 h-8 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center flex-shrink-0 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
+              <img
+                src="https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg"
+                alt="Gemini"
+                class="w-5 h-5 favicon-img" />
             </div>
-          </div>
+            <span
+              class="text-sm font-medium text-slate-600 dark:text-gray-400 group-hover:text-odoo-purple dark:group-hover:text-odoo-purple-light whitespace-nowrap transition-colors duration-200">
+              Gemini
+            </span>
+          </a>
+          <!-- ChatGPT -->
+          <a
+            href="https://chat.openai.com"
+            target="_blank"
+            class="group flex flex-row items-center gap-2 px-3 py-2 bg-white dark:bg-card-bg rounded-full cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md border border-slate-200 dark:border-gray-600">
+            <div
+              class="w-8 h-8 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center flex-shrink-0 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
+              <img
+                src="https://www.google.com/s2/favicons?domain=chat.openai.com&sz=64"
+                alt="ChatGPT"
+                class="w-5 h-5 favicon-img" />
+            </div>
+            <span
+              class="text-sm font-medium text-slate-600 dark:text-gray-400 group-hover:text-odoo-purple dark:group-hover:text-odoo-purple-light whitespace-nowrap transition-colors duration-200">
+              ChatGPT
+            </span>
+          </a>
+          <!-- Claude -->
+          <a
+            href="https://claude.ai"
+            target="_blank"
+            class="group flex flex-row items-center gap-2 px-3 py-2 bg-white dark:bg-card-bg rounded-full cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md border border-slate-200 dark:border-gray-600">
+            <div
+              class="w-8 h-8 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center flex-shrink-0 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
+              <img
+                src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64"
+                alt="Claude"
+                class="w-5 h-5 favicon-img" />
+            </div>
+            <span
+              class="text-sm font-medium text-slate-600 dark:text-gray-400 group-hover:text-odoo-purple dark:group-hover:text-odoo-purple-light whitespace-nowrap transition-colors duration-200">
+              Claude
+            </span>
+          </a>
+          <!-- Perplexity -->
+          <a
+            href="https://www.perplexity.ai"
+            target="_blank"
+            class="group flex flex-row items-center gap-2 px-3 py-2 bg-white dark:bg-card-bg rounded-full cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md border border-slate-200 dark:border-gray-600">
+            <div
+              class="w-8 h-8 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center flex-shrink-0 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
+              <img
+                src="https://www.google.com/s2/favicons?domain=www.perplexity.ai&sz=64"
+                alt="Perplexity"
+                class="w-5 h-5 favicon-img" />
+            </div>
+            <span
+              class="text-sm font-medium text-slate-600 dark:text-gray-400 group-hover:text-odoo-purple dark:group-hover:text-odoo-purple-light whitespace-nowrap transition-colors duration-200">
+              Perplexity
+            </span>
+          </a>
+          <!-- Grok -->
+          <a
+            href="https://x.ai"
+            target="_blank"
+            class="group flex flex-row items-center gap-2 px-3 py-2 bg-white dark:bg-card-bg rounded-full cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md border border-slate-200 dark:border-gray-600">
+            <div
+              class="w-8 h-8 bg-white/50 dark:bg-card-bg/30 backdrop-blur-sm border border-slate-200/40 dark:border-gray-700/30 rounded-full flex items-center justify-center flex-shrink-0 group-hover:border-odoo-purple/50 dark:group-hover:border-odoo-purple-light/50 transition-all duration-200">
+              <img
+                src="https://www.google.com/s2/favicons?domain=x.ai&sz=64"
+                alt="Grok"
+                class="w-5 h-5 favicon-img" />
+            </div>
+            <span
+              class="text-sm font-medium text-slate-600 dark:text-gray-400 group-hover:text-odoo-purple dark:group-hover:text-odoo-purple-light whitespace-nowrap transition-colors duration-200">
+              Grok
+            </span>
+          </a>
         </div>
-        <!-- AI Services Dropdown -->
+      </div>
+    </div>
 
-        <button
-          id="themeToggle"
-          class="p-5 bg-white dark:bg-card-bg rounded-full shadow-lg dark:shadow-none border border-slate-200 dark:border-gray-600 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-odoo-purple/50 dark:focus:ring-odoo-purple-light/50 hover:border-odoo-purple/30 dark:hover:border-odoo-purple-light/30 group z-[99999]">
+    <!-- Theme Toggle Button (Right) -->
+    <button
+      id="themeToggle"
+      class="p-4 bg-white dark:bg-card-bg rounded-full shadow-lg dark:shadow-none border border-slate-200 dark:border-gray-600 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-odoo-purple/50 dark:focus:ring-odoo-purple-light/50 hover:border-odoo-purple/30 dark:hover:border-odoo-purple-light/30 group pointer-events-auto">
           <!-- Light mode icon -->
           <svg
             id="lightIcon"
@@ -1141,11 +1130,10 @@
           </svg>
           <span class="sr-only">Toggle theme</span>
         </button>
-      </div>
-    </div>
+  </div>
 
-    <script src="dist/mode-sync.js"></script>
+  <script src="dist/mode-sync.js"></script>
     <script src="dist/ai-services.js"></script>
-    <script type="module" src="dist/js/app.js"></script>
-  </body>
+  <script type="module" src="dist/js/app.js"></script>
+</body>
 </html>

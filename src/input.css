@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure SVG icons are white when button is active */
+.text-white svg {
+  color: white !important;
+}
+
+.text-white svg path,
+.text-white svg rect,
+.text-white svg circle {
+  stroke: currentColor !important;
+}
